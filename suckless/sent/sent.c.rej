@@ -1,0 +1,10 @@
+--- sent.c
++++ sent.c
+@@ -107,6 +107,7 @@ static void xdraw();
+ static void xhints();
+ static void xinit();
+ static void xloadfonts();
++static void togglescm();
+ 
+ static void bpress(XEvent *);
+ static void cmessage(XEvent *);
