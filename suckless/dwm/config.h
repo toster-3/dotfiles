@@ -3,8 +3,8 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 4;        /* gaps between windows */
-static const unsigned int snap      = 2;       /* snap pixel */
-static const int swallowfloating = 1 ; /*1 means swallow floating window by default*/
+static const unsigned int snap      = 2;        /* snap pixel */
+static const int swallowfloating    = 1;        /*1 means swallow floating window by default*/
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -37,6 +37,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "Alacritty",NULL,   NULL,            0,         0,          1,           0,        -1 },
+	{ "kitty",NULL,   NULL,            0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -68,8 +69,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0";   /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]    = { "kitty", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL};
-static const char *st[] = { "st" , NULL }; 
+static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *screenshot[] = { "/home/rose/.config/dwm/screenshot.sh", NULL };
+static const char *st[] = { "st" , NULL };
 static const char *sp[] = { "src", NULL };
 
 static const Key keys[] = {
@@ -77,7 +79,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = st } },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = sp } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = firefoxcmd}},
     { MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
